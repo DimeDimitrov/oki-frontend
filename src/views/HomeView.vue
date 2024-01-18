@@ -1,11 +1,13 @@
 <template>
+    <h1 class="header">Статистики за возачки испити</h1>
     <div class="wrapper" >
-    <div v-if="chartData" v-for="item in chartData">
-        <h1>{{ item.name }}</h1>
-        <apexchart type="donut" width="380" :options="chartOptions" :series="item.data"></apexchart>
-        <h3>Sample size : ({{ item.sample_size }})</h3>
+    <div class="chart-container" v-if="chartData" v-for="item in chartData">
+        <a :href="getLinkForWebsite(item.type)" class="chart-title">{{item.type }}</a>
+        <apexchart class="chart" type="donut" width="360" :options="chartOptions" :series="item.data"></apexchart>
+        <h3 class="sample-size">Sample size : ({{ item.sample_size }})</h3>
     </div>
     </div>
+    <h3 id="latest">Latest update {{ data.latest_date }}</h3>
 </template>
 
 <script setup>
@@ -22,9 +24,9 @@ fetch(url).then(res => {
     data = response
     console.log(data)
 
-    const processedData = data.by_website.map(item => {
+    let processedData = data.home.map(item => {
         return {
-        name: getNameForWebsite(item.website),
+        type: item.type,
         data: [
           item.stats.attempts_1,
           item.stats.attempts_2,
@@ -35,8 +37,9 @@ fetch(url).then(res => {
           item.stats.attempts_2 +
           item.stats.attempts_3 +
           item.stats.attempts_other
-      };
+        };
     })
+    processedData.latest_date = data.latest_date
     chartData.value = processedData;
 })
 
@@ -58,25 +61,63 @@ const chartOptions = ref({
         }
     }]
 });
-  
-function getNameForWebsite(website) {
-  // You can replace this logic with a mapping or any other logic based on your data
-  if (website === 'http://sic1.ddnsfree.com/zsrn/') return 'Зелен Сигнал-ОКИ - Велес';
-  if (website === 'http://ics.ddnsfree.com:81/icsrzn1/') return 'Испитен Центар - Струмица';
-  if (website === 'http://sic1.ddnsfree.com/svrez1/') return 'Современ Возач - Охрид';
-  if (website === 'http://newdriver.hopto.org/ndrez/default.aspx') return 'Њу Драјвер - Тетово';
-  if (website === 'http://sic1.ddnsfree.com/ivr1/') return 'Исток-Возач - Штип';
-  if (website === 'http://www.sicam.mk/termini.aspx') return 'АМ ДООЕЛ - Битола';
-  if (website === 'http://77.28.103.235/tdrn/') return 'Топ Драјвеер - Куманово';
-  if (website === 'http://sicrez.ddns.net:8008/avir1/') return 'Авто Испитен Центар - Скопје';
+function getLinkForWebsite(website){
+  if (website === 'Теорија') return '/teorija';
+  if (website === 'Град') return '/grad';
+  if (website === 'Полигон') return '/poligon';
 
-  // Default to the website if no match is found
-  return website;
+  return '/error'
 }
 </script>
 <style scoped>
-.wrapper{
-    display: flex;
-    flex-wrap: wrap;
+.wrapper {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center; /* Center the chart containers horizontally */
+  flex-wrap: wrap;
+}
+
+.chart-container {
+  margin: 20px;
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 24rem; /* Limit the maximum width of each container */
+  width: 100%; /* Take up 100% width of the parent container */
+}
+
+.chart-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.chart {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.sample-size {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #888;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.header{
+    text-align: center;
+}
+
+#latest{
+    text-align: right;
+    margin-right: 4rem;
+    font-size: 1rem;
+    color: gray;
 }
 </style>
