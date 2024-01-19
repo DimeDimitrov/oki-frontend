@@ -1,45 +1,28 @@
 <template>
-    <div class="wrapper" >
-    <div class="chart-container" v-if="chartData" v-for="item in chartData">
-        <a :href="getLinkForWebsite(item.origin)" class="chart-title">{{getNameForWebsite(item.origin) }}</a>
-        <h2 class="subtitle"> {{ getCityForWebsite(item.origin) }}</h2>
-        <apexchart class="chart" type="donut" width="360" :options="chartOptions" :series="item.data"></apexchart>
-        <h3 class="sample-size">Sample size : ({{ item.sample_size }})</h3>
-    </div>
-    </div>
+  <div class="wrapper" >
+  <div class="chart-container" v-if="chartData" v-for="item in chartData">
+      <a :href="getLinkForWebsite(item.website)" class="chart-title">{{getNameForWebsite(item.website) }}</a>
+      <h2 class="subtitle"> {{ getCityForWebsite(item.website) }}</h2>
+      <apexchart class="chart" type="donut" width="360" :options="chartOptions" :series="Object.values(item.stats)"></apexchart>
+      <h3 class="sample-size">Sample size : ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
+      <a id="poveke" href="">Повеќе...</a>
+  </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useStore } from 'vuex'
 
-const url = 'http://localhost:3000/stats'
-let data = {}
+const store = useStore();
 const chartData = ref([])
 
-fetch(url).then(res => {
-    return res.json();
-})
-.then(response => {
-    data = response
-    console.log(data)
-
-    const processedData = data.by_website_poligon.map(item => {
-        return {
-        origin: item.website,
-        data: [
-          item.stats.attempts_1,
-          item.stats.attempts_2,
-          item.stats.attempts_3,
-          item.stats.attempts_other,
-        ],
-        sample_size: item.stats.attempts_1 +
-          item.stats.attempts_2 +
-          item.stats.attempts_3 +
-          item.stats.attempts_other
-      };
-    })
-    chartData.value = processedData;
-})
+onMounted(async () => {
+    if (store.state.chartData.length === 0) {
+      await store.dispatch('fetchChartData');
+    }
+    chartData.value = store.state.chartData.by_website_poligon
+});
 
 const chartOptions = ref({
     chart: {
@@ -59,48 +42,67 @@ const chartOptions = ref({
         }
     }]
 });
-  
-function getNameForWebsite(website) {
-  // You can replace this logic with a mapping or any other logic based on your data
-  if (website === 'http://sic1.ddnsfree.com/zsrn/') return 'Зелен Сигнал-ОКИ';
-  if (website === 'http://ics.ddnsfree.com:81/icsrzn1/') return 'Испитен Центар';
-  if (website === 'http://sic1.ddnsfree.com/svrez1/') return 'Современ Возач';
-  if (website === 'http://newdriver.hopto.org/ndrez/default.aspx') return 'Њу Драјвер';
-  if (website === 'http://sic1.ddnsfree.com/ivr1/') return 'Исток-Возач';
-  if (website === 'http://www.sicam.mk/termini.aspx') return 'АМ ДООЕЛ';
-  if (website === 'http://77.28.103.235/tdrn/') return 'Топ Драјвер';
-  if (website === 'http://sicrez.ddns.net:8008/avir1/') return 'Авто Испитен Центар';
 
-  // Default to the website if no match is found
-  return website;
+const websiteMappings = {
+  'http://sic1.ddnsfree.com/zsrn/': {
+    name: 'Зелен Сигнал-ОКИ',
+    link: 'http://www.zelensignal-oki.com.mk/',
+    city: 'Велес',
+  },
+  'http://ics.ddnsfree.com:81/icsrzn1/': {
+    name: 'Испитен Центар',
+    link: 'https://www.ispitencentarstrumica.mk/',
+    city: 'Струмица',
+  },
+  'http://sic1.ddnsfree.com/svrez1/': {
+    name: 'Современ Возач',
+    link: 'https://www.sovremenvozacohrid.mk/',
+    city: 'Охрид',
+  },
+  'http://newdriver.hopto.org/ndrez/default.aspx': {
+    name: 'Њу Драјвер',
+    link: 'http://www.newdriver.mk/',
+    city: 'Тетово',
+  },
+  'http://sic1.ddnsfree.com/ivr1/': {
+    name: 'Исток-Возач',
+    link: 'https://istokvozac.mk/',
+    city: 'Штип',
+  },
+  'http://www.sicam.mk/termini.aspx': {
+    name: 'АМ ДООЕЛ',
+    link: 'http://www.sicam.mk/index.html',
+    city: 'Битола',
+  },
+  'http://77.28.103.235/tdrn/': {
+    name: 'Топ Драјвер',
+    link: 'http://www.topdrajver.mk/',
+    city: 'Куманово',
+  },
+  'http://sicrez.ddns.net:8008/avir1/': {
+    name: 'Авто Испитен Центар',
+    link: 'https://www.aic.mk/',
+    city: 'Скопје',
+  },
+};
+
+function getWebsiteDetails(website) {
+  const defaultDetails = {
+    name: website,
+    link: '/error',
+    city: website,
+  };
+  return websiteMappings[website] || defaultDetails;
 }
-function getLinkForWebsite(website){
-  if (website === 'http://sic1.ddnsfree.com/zsrn/') return 'http://www.zelensignal-oki.com.mk/';
-  if (website === 'http://ics.ddnsfree.com:81/icsrzn1/') return 'https://www.ispitencentarstrumica.mk/';
-  if (website === 'http://sic1.ddnsfree.com/svrez1/') return 'https://www.sovremenvozacohrid.mk/';
-  if (website === 'http://newdriver.hopto.org/ndrez/default.aspx') return 'http://www.newdriver.mk/';
-  if (website === 'http://sic1.ddnsfree.com/ivr1/') return 'https://istokvozac.mk/';
-  if (website === 'http://www.sicam.mk/termini.aspx') return 'http://www.sicam.mk/index.html';
-  if (website === 'http://77.28.103.235/tdrn/') return 'http://www.topdrajver.mk/';
-  if (website === 'http://sicrez.ddns.net:8008/avir1/') return 'https://www.aic.mk/';
 
-  return '/error'
+function getNameForWebsite(website) {
+  return getWebsiteDetails(website).name;
+}
+function getLinkForWebsite(website) {
+  return getWebsiteDetails(website).link;
 }
 function getCityForWebsite(website) {
-  // Mapping city to website based on your data
-  const cityMapping = {
-    'http://sic1.ddnsfree.com/zsrn/': 'Велес',
-    'http://ics.ddnsfree.com:81/icsrzn1/': 'Струмица',
-    'http://sic1.ddnsfree.com/svrez1/': 'Охрид',
-    'http://newdriver.hopto.org/ndrez/default.aspx': 'Тетово',
-    'http://sic1.ddnsfree.com/ivr1/': 'Штип',
-    'http://www.sicam.mk/termini.aspx': 'Битола',
-    'http://77.28.103.235/tdrn/': 'Куманово',
-    'http://sicrez.ddns.net:8008/avir1/': 'Скопје',
-  };
-
-  // Return city if found, otherwise default to the website
-  return cityMapping[website] || website;
+  return getWebsiteDetails(website).city;
 }
 </script>
 <style scoped>
