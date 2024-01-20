@@ -2,46 +2,28 @@
     <h1 class="header">Статистики за возачки испити</h1>
     <div class="wrapper" >
     <div class="chart-container" v-if="chartData" v-for="item in chartData">
-        <a :href="getLinkForWebsite(item.type)" class="chart-title">{{item.type }}</a>
-        <apexchart class="chart" type="donut" width="360" :options="chartOptions" :series="item.data"></apexchart>
-        <h3 class="sample-size">Sample size : ({{ item.sample_size }})</h3>
+        <a :href="getLinkForWebsite(item.type)" class="chart-title">{{ item.type }}</a>
+        <apexchart class="chart" type="donut" width="360" :options="chartOptions" :series="Object.values(item.stats)"></apexchart>
+        <h3 class="sample-size">Sample size : ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
     </div>
     </div>
-    <h3 id="latest">Latest update {{ data.latest_date }}</h3>
+    <h3 id="latest">Data updated : {{ chartData.latest_date }}</h3>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useStore } from 'vuex'
 
-const url = 'http://localhost:3000/stats'
-let data = {}
+const store = useStore()
 const chartData = ref([])
 
-fetch(url).then(res => {
-    return res.json();
-})
-.then(response => {
-    data = response
-    console.log(data)
-
-    let processedData = data.home.map(item => {
-        return {
-        type: item.type,
-        data: [
-          item.stats.attempts_1,
-          item.stats.attempts_2,
-          item.stats.attempts_3,
-          item.stats.attempts_other,
-        ],
-        sample_size: item.stats.attempts_1 +
-          item.stats.attempts_2 +
-          item.stats.attempts_3 +
-          item.stats.attempts_other
-        };
-    })
-    processedData.latest_date = data.latest_date
-    chartData.value = processedData;
-})
+onMounted(async () => {
+    if (store.state.chartData.length === 0) {
+      await store.dispatch('fetchChartData');
+    }
+    chartData.value = store.state.chartData.home;
+    chartData.value.latest_date = store.state.chartData.latest_date
+});
 
 const chartOptions = ref({
     chart: {
@@ -69,6 +51,7 @@ function getLinkForWebsite(website){
   return '/error'
 }
 </script>
+
 <style scoped>
 .wrapper {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

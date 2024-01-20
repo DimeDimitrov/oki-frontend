@@ -1,11 +1,11 @@
 <template>
     <div class="wrapper" >
-    <div class="chart-container" v-if="chartData" v-for="item in chartData">
+    <div class="chart-container" v-if="chartData" v-for="(item, index) in chartData">
         <a :href="getLinkForWebsite(item.website)" class="chart-title">{{getNameForWebsite(item.website) }}</a>
         <h2 class="subtitle"> {{ getCityForWebsite(item.website) }}</h2>
         <apexchart class="chart" type="donut" width="360" :options="chartOptions" :series="Object.values(item.stats)"></apexchart>
         <h3 class="sample-size">Sample size : ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
-        <a id="poveke" href="">Повеќе...</a>
+        <router-link :to="{ name: 'details-grad', params: { website: encodeURIComponent(index) } }">Повеќе...</router-link>
     </div>
     </div>
 </template>

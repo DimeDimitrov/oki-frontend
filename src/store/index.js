@@ -18,6 +18,8 @@ export default createStore({
       try {
         const response = await fetch(url);
         const data = await response.json();
+        console.log("Got data from server.")
+        console.log(data)
         commit('setChartData', data);
       } catch (error) {
         console.error('Error fetching data:', error);
