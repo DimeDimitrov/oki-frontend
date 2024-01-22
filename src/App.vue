@@ -10,17 +10,30 @@ import { RouterLink, RouterView } from 'vue-router'
         <img src="/logo.png" alt="Logo" class="logo" />
 
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/grad">Градска</RouterLink>
-        <RouterLink to="/poligon">Полигон</RouterLink>
-        <RouterLink to="/teorija">Теорија</RouterLink>
         <div class="dropdown">
-        <RouterLink to="/gradovi/grad">Градови</RouterLink>
-        <div class="dropdown-content">
-          <RouterLink to="/gradovi/grad">Градска</RouterLink>
-          <RouterLink to="/gradovi/poligon">Полигон</RouterLink>
-          <RouterLink to="/gradovi/teorija">Теорија</RouterLink>
+          <RouterLink to="/grad">Испитни Центри</RouterLink>
+          <div class="dropdown-content">
+            <RouterLink to="/grad">Градска</RouterLink>
+            <RouterLink to="/poligon">Полигон</RouterLink>
+            <RouterLink to="/teorija">Теорија</RouterLink>
+          </div>
         </div>
-      </div>
+        <div class="dropdown">
+          <RouterLink to="/gradovi/grad">Градови</RouterLink>
+          <div class="dropdown-content">
+            <RouterLink to="/gradovi/grad">Градска</RouterLink>
+            <RouterLink to="/gradovi/poligon">Полигон</RouterLink>
+            <RouterLink to="/gradovi/teorija">Теорија</RouterLink>
+          </div>
+        </div>
+        <div class="dropdown">
+          <RouterLink to="/skoli/grad">Школи</RouterLink>
+          <div class="dropdown-content">
+            <RouterLink to="/skoli/grad">Градска</RouterLink>
+            <RouterLink to="/skoli/poligon">Полигон</RouterLink>
+            <RouterLink to="/skoli/teorija">Теорија</RouterLink>
+          </div>
+        </div>
       </nav>
     </div>
 

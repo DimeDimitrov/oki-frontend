@@ -9,6 +9,9 @@ import DetailsPoligonView from '../views/DetailsPoligonView.vue'
 import LocationGradView from "../views/LocationGradView.vue"
 import LocationPoligonView from "../views/LocationPoligonView.vue"
 import LocationTeorijaView from "../views/LocationTeorijaView.vue"
+import SkoliGradView from "../views/SkoliGradView.vue"
+import SkoliPoligonView from "../views/SkoliPoligonView.vue"
+import SkoliTeorijaView from "../views/SkoliTeorijaView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,6 +68,21 @@ const router = createRouter({
       path: '/gradovi/teorija',
       name: 'location-teorija',
       component: LocationTeorijaView,
+    },
+    {
+      path: '/skoli/grad',
+      name: 'skoli-grad',
+      component: SkoliGradView,
+    },
+    {
+      path: '/skoli/poligon',
+      name: 'skoli-poligon',
+      component: SkoliPoligonView,
+    },
+    {
+      path: '/skoli/teorija',
+      name: 'skoli-teorija',
+      component: SkoliTeorijaView,
     },
 
   ]
