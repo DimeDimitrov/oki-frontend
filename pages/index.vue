@@ -1,13 +1,14 @@
 <template>
-    <h1 class="header">Статистики за возачки испити</h1>
+    <h1 class="header">Статистики за возачки испити (цела Македонија)</h1>
     <div class="wrapper" >
-    <div class="chart-container" v-if="chartData" v-for="item in chartData">
+      <div class="chart-container" v-if="chartData" v-for="item in chartData">
         <a :href="getLinkForWebsite(item.type)" class="chart-title">{{ item.type }}</a>
         <DonutChart class="chart" :labels="labels" :data="getChartData(item.stats)" :colors="colors"/>
         <h3 class="sample-size">Sample size : ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
-    </div>
+      </div>
     </div>
     <h3 id="latest">Data updated : {{ chartData.latest_date }}</h3>
+    <h2 class="subtitle">Добредојдовте на нашиот вебсајт за статистика на возачки испити во Македонија. Дознајте повеќе за успешноста на испитите, статистика по градови и училишта</h2>
 </template>
 
 <script setup>
@@ -77,6 +78,7 @@ function getLinkForWebsite(website){
   font-size: 1.2rem;
   color: #555;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .header{

@@ -3,6 +3,7 @@
     <NuxtLayout>
       <Navbar />
       <NuxtPage />
+      <Footer />
     </NuxtLayout>
   </div>
 </template>
@@ -10,22 +11,20 @@
 <script setup lang="ts">
 
 useHead({
-  title: 'My App',
+  title: 'Статистики за возачки испити',
   meta: [
-    { name: 'description', content: 'My amazing site.' }
+    { name: 'keywords', content: 'возачки испити, испитен центар, статистики, statistiki, Македонија, ispiten centar, vozacki ispiti, rezultati, vozacki testovi, vozacki ispit, rezultati, pass rate' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
   ],
-  script: [
-    {
-      src: "",
-      tagPosition: 'bodyClose'
-    }
-  ]
 })
 useSeoMeta({
-  title: 'Статистики за возачки испити - Македонија',
-  ogTitle: 'My Amazing Site',
-  description: 'This is my amazing site, let me tell you all about it.',
-  ogDescription: 'This is my amazing site, let me tell you all about it.',
+  title: 'Статистики за возачки испити во Македонија',
+  description: 'Откриј трендови во разни испитни центри и на кој обид минат луѓето во градовите. Одберете ги најдобрите возачки училишта според вистински резултати.',
+  ogTitle: 'Статистики за возачки испити во Македонија',
+  ogDescription: 'Откриј трендови во разни испитни центри и на кој обид минат луѓето во градовите. Одберете ги најдобрите возачки училишта според вистински резултати.',
+  ogUrl: "https://vozackiispiti.com",
+  ogLocale: "mk_MK",
+  ogSiteName: "Статистики за возачки испити",
   ogImage: 'https://example.com/image.png',
   twitterCard: 'summary_large_image',
 })

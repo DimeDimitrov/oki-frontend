@@ -1,8 +1,9 @@
 <template>
+  <h1 class="header">Статистики според град (полигон)</h1>
   <div class="wrapper" >
   <div class="chart-container" v-if="chartData" v-for="(item, index) in chartData">
       <a class="chart-title">{{item.city }}</a>
-      <DonutChart class="chart" :labels="labels" :data="getChartData(item.stats)" :colors="colors"/>
+      <DonutChart class="chart" hideLegend="true" :labels="labels" :data="getChartData(item.stats)" :colors="colors"/>
       <h3 class="sample-size">Sample size : ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
   </div>
   </div>
@@ -68,7 +69,7 @@ color: #555;
 margin-bottom: 8px;
 }
 
-#poveke{
-
+.header{
+  text-align: center;
 }
 </style>

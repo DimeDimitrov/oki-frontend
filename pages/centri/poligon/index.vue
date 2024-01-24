@@ -1,4 +1,5 @@
 <template>
+  <h1 class="header">Статистики според испитни центри (полигон)</h1>
     <div class="wrapper" >
     <div class="chart-container" v-if="chartData" v-for="(item, index) in chartData">
         <a :href="getLinkForWebsite(item.website)" class="chart-title">{{getNameForWebsite(item.website) }}</a>
@@ -93,7 +94,7 @@ function getCityForWebsite(website) {
 .wrapper {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: flex;
-  justify-content: center; /* Center the chart containers horizontally */
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -104,8 +105,8 @@ function getCityForWebsite(website) {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  max-width: 24rem; /* Limit the maximum width of each container */
-  width: 100%; /* Take up 100% width of the parent container */
+  max-width: 24rem;
+  width: 100%;
 }
 
 .chart-title {
@@ -130,7 +131,17 @@ function getCityForWebsite(website) {
   margin-bottom: 0px;
 }
 
-#poveke{
+.header {
+  text-align: center;
+}
 
+@media screen and (max-width: 600px) {
+  .chart-container {
+    max-width: 100%;
+  }
+
+  .chart {
+    max-width: 100%;
+  }
 }
 </style>

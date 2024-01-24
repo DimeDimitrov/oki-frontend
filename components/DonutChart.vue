@@ -7,10 +7,17 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import ChartDataLabels from 'chartjs-plugin-datalabels'
-const props = defineProps(['labels', 'data', 'colors']);
-
+const props = defineProps({
+  labels: Array,
+  data: Array,
+  colors: Array,
+  hideLegend: {
+    required: false,
+    type: Boolean,
+    default: false
+  }
+});
 const donutChartCanvas = ref(null);
-
 onMounted(() => {
   import('chart.js/auto').then(({ Chart }) => {
 
@@ -48,7 +55,7 @@ onMounted(() => {
             },
           },
           legend: {
-            display: true,
+            display: props.hideLegend ? false : true,
             position: 'right',
             labels: {
               usePointStyle: true,
