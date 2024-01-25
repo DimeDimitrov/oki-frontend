@@ -1,12 +1,12 @@
 <template>
-  <h1 class="header">Статистики според испитни центри (полигон)</h1>
+  <h1 class="header">Статистики според испитни центри (градска)</h1>
     <div class="wrapper" >
     <div class="chart-container" v-if="chartData" v-for="(item, index) in chartData">
-        <a :href="getLinkForWebsite(item.website)" class="chart-title">{{getNameForWebsite(item.website) }}</a>
-        <h2 class="subtitle"> {{ getCityForWebsite(item.website) }}</h2>
+        <div class="chart-top">
+          <a :title="getNameForWebsite(item.website)" :href="getLinkForWebsite(item.website)" class="chart-title"><img class="chart-image" :src="getImageForWebsite(item.website)" :alt="getNameForWebsite(item.website)"></a>
+        </div>
         <DonutChart class="chart" :labels="labels" :data="getChartData(item.stats)" :colors="colors"/>
-        <h3 class="sample-size">Sample size : ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
-        <a href="">Повеќе...</a>
+        <h3 class="sample-size">Sample size: ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
     </div>
     </div>
 </template>
@@ -26,47 +26,54 @@ function getChartData(stats) {
   return Object.values(stats);
 }
 const labels = ['на прва','на втора','на трета','на 3+']
-const colors = ['#008ffb', '#00E396', '#FEB019', '#FF4560']
 const websiteMappings = {
   'http://sic1.ddnsfree.com/zsrn/': {
-    name: 'Зелен Сигнал-ОКИ',
+    name: 'Зелен Сигнал ОКИ - Велес',
     link: 'http://www.zelensignal-oki.com.mk/',
     city: 'Велес',
+    image: '/cities/veles.jpg'
   },
   'http://ics.ddnsfree.com:81/icsrzn1/': {
-    name: 'Испитен Центар',
+    name: 'Испитен Центар - Струмица',
     link: 'https://www.ispitencentarstrumica.mk/',
     city: 'Струмица',
+    image: '/cities/strumica.jpg'
   },
   'http://sic1.ddnsfree.com/svrez1/': {
-    name: 'Современ Возач',
+    name: 'Современ Возач - Охрид',
     link: 'https://www.sovremenvozacohrid.mk/',
     city: 'Охрид',
+    image: '/cities/ohrid.jpg'
   },
   'http://newdriver.hopto.org/ndrez/default.aspx': {
-    name: 'Њу Драјвер',
+    name: 'Њу Драјвер - Тетово',
     link: 'http://www.newdriver.mk/',
     city: 'Тетово',
+    image: '/cities/tetovo.png'
   },
   'http://sic1.ddnsfree.com/ivr1/': {
-    name: 'Исток-Возач',
+    name: 'Исток-Возач - Штип',
     link: 'https://istokvozac.mk/',
     city: 'Штип',
+    image: '/cities/shtip.jpg'
   },
   'http://www.sicam.mk/termini.aspx': {
-    name: 'АМ ДООЕЛ',
+    name: 'АМ ДООЕЛ - Битола',
     link: 'http://www.sicam.mk/index.html',
     city: 'Битола',
+    image: '/cities/bitola.png'
   },
   'http://77.28.103.235/tdrn/': {
-    name: 'Топ Драјвер',
+    name: 'Топ Драјвер - Куманово',
     link: 'http://www.topdrajver.mk/',
     city: 'Куманово',
+    image: '/cities/kumanovo.jpg'
   },
   'http://sicrez.ddns.net:8008/avir1/': {
-    name: 'Авто Испитен Центар',
+    name: 'Авто Испитен Центар - Скопје',
     link: 'https://www.aic.mk/',
     city: 'Скопје',
+    image: '/cities/skopje.jpg'
   },
 };
 
@@ -75,6 +82,7 @@ function getWebsiteDetails(website) {
     name: website,
     link: '/error',
     city: website,
+    image: website,
   };
   return websiteMappings[website] || defaultDetails;
 }
@@ -88,6 +96,9 @@ function getLinkForWebsite(website) {
 function getCityForWebsite(website) {
   return getWebsiteDetails(website).city;
 }
+function getImageForWebsite(website) {
+  return getWebsiteDetails(website).image;
+}
 </script>
 
 <style scoped>
@@ -99,6 +110,7 @@ function getCityForWebsite(website) {
 }
 
 .chart-container {
+  background-color: white;
   margin: 20px;
   padding: 18px;
   border: 1px solid #ddd;
@@ -108,12 +120,20 @@ function getCityForWebsite(website) {
   max-width: 24rem;
   width: 100%;
 }
-
+.chart-top{
+  height: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .chart-title {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
-
+.chart-image{
+  width: 100%;
+  max-width: 100%;
+}
 .chart {
   max-width: 300px;
   margin: 0 auto;
@@ -121,6 +141,7 @@ function getCityForWebsite(website) {
 
 .sample-size {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 1rem;
   color: #888;
 }

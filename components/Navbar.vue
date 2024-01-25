@@ -36,7 +36,7 @@ import type { NuxtLink } from '#build/components';
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #6d6d6d;
+  background-color: rgb(127, 158, 224);
   padding: 10px;
   position: relative;
   z-index: 1000;
@@ -47,10 +47,10 @@ import type { NuxtLink } from '#build/components';
 }
 
 .logo {
-  width: 40px;
+  width: 3rem;
   height: auto;
   position: absolute;
-  left: 4rem;
+  left: 26rem;
 }
 
 .navbar a {
@@ -61,8 +61,7 @@ import type { NuxtLink } from '#build/components';
 }
 
 .navbar a:hover {
-  
-  background-color: #7a7979;
+  background-color: rgb(117, 148, 216);
 }
 
 /* Dropdown styles */
@@ -76,7 +75,7 @@ import type { NuxtLink } from '#build/components';
   width: 100%;
   display: none;
   position: absolute;
-  background-color: rgb(73, 73, 73);
+  background-color: rgb(101, 129, 189);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
@@ -89,7 +88,7 @@ import type { NuxtLink } from '#build/components';
 }
 
 .dropdown-content a:hover {
-  background-color: #3090cf;
+  background-color: rgb(105, 133, 194);
 }
 .dropdown:hover .dropdown-content {
   display: block;

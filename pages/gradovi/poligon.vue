@@ -36,6 +36,7 @@ flex-wrap: wrap;
 }
 
 .chart-container {
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;

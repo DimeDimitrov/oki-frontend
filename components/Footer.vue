@@ -8,13 +8,13 @@
 
 <style scoped>
 footer {
-  background-color: #f8f8f8;
+  background-color: rgb(129, 158, 221);
   text-align: center;
-  padding: 10px;
   bottom: 0;
   width: 100%;
   overflow: hidden;
   border-top: 1px solid #ddd;
+  color:  white;
 }
 
 a {
