@@ -38,8 +38,8 @@ onMounted(() => {
       options: {
         aspectRatio: 1.3,
         animation: {
-          duration: 1000,
-          easing: ""
+          duration: 400,
+          easing: "easeInOutCirc"
         },
         plugins: {
           datalabels: {

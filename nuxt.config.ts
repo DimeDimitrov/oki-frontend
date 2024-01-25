@@ -10,9 +10,13 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/seo',
+    'nuxt-gtag'
   ],
   plugins: [
     { src: '~/plugins/chart.js', mode: 'client' },
     { src: '~/plugins/easy-data-table.js', mode: 'client' },
   ],
+  gtag: {
+    id: "G-J64JSE1X54"
+  }
 })
