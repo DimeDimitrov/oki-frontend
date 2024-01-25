@@ -2,7 +2,7 @@
 import type { NuxtLink } from '#build/components';
 <template>
     <nav class="navbar">
-        <!-- <img src="/logo.png" alt="Logo" class="logo" /> -->
+        <img src="/logo.png" alt="Logo" class="logo" />
 
         <NuxtLink to="/">Home</NuxtLink>
         <div class="dropdown">
@@ -36,7 +36,7 @@ import type { NuxtLink } from '#build/components';
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #3498db;
+  background-color: #6d6d6d;
   padding: 10px;
   position: relative;
   z-index: 1000;
@@ -61,7 +61,8 @@ import type { NuxtLink } from '#build/components';
 }
 
 .navbar a:hover {
-  background-color: #2980b9;
+  
+  background-color: #7a7979;
 }
 
 /* Dropdown styles */
@@ -75,7 +76,7 @@ import type { NuxtLink } from '#build/components';
   width: 100%;
   display: none;
   position: absolute;
-  background-color: #3ba8f0;
+  background-color: rgb(73, 73, 73);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }

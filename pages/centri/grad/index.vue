@@ -26,7 +26,6 @@ function getChartData(stats) {
   return Object.values(stats);
 }
 const labels = ['на прва','на втора','на трета','на 3+']
-const colors = ['#008ffb', '#00E396', '#FEB019', '#FF4560']
 const websiteMappings = {
   'http://sic1.ddnsfree.com/zsrn/': {
     name: 'Зелен Сигнал-ОКИ',

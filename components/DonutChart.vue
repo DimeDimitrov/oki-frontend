@@ -29,7 +29,7 @@ onMounted(() => {
         datasets: [
           {
             data: props.data,
-            backgroundColor: props.colors,
+            backgroundColor: ['#2ecc71', '#e7b416', '#e67e22', '#FF4560'],
             hoverOffset: 4,
           },
         ],
