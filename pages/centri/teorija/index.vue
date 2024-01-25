@@ -31,49 +31,49 @@ const websiteMappings = {
     name: 'Зелен Сигнал ОКИ - Велес',
     link: 'http://www.zelensignal-oki.com.mk/',
     city: 'Велес',
-    image: '/cities/veles.jpg'
+    image: '/cities/veles.webp'
   },
   'http://ics.ddnsfree.com:81/icsrzn1/': {
     name: 'Испитен Центар - Струмица',
     link: 'https://www.ispitencentarstrumica.mk/',
     city: 'Струмица',
-    image: '/cities/strumica.jpg'
+    image: '/cities/strumica.webp'
   },
   'http://sic1.ddnsfree.com/svrez1/': {
     name: 'Современ Возач - Охрид',
     link: 'https://www.sovremenvozacohrid.mk/',
     city: 'Охрид',
-    image: '/cities/ohrid.jpg'
+    image: '/cities/ohrid.webp'
   },
   'http://newdriver.hopto.org/ndrez/default.aspx': {
     name: 'Њу Драјвер - Тетово',
     link: 'http://www.newdriver.mk/',
     city: 'Тетово',
-    image: '/cities/tetovo.png'
+    image: '/cities/tetovo.webp'
   },
   'http://sic1.ddnsfree.com/ivr1/': {
     name: 'Исток-Возач - Штип',
     link: 'https://istokvozac.mk/',
     city: 'Штип',
-    image: '/cities/shtip.jpg'
+    image: '/cities/shtip.webp'
   },
   'http://www.sicam.mk/termini.aspx': {
     name: 'АМ ДООЕЛ - Битола',
     link: 'http://www.sicam.mk/index.html',
     city: 'Битола',
-    image: '/cities/bitola.png'
+    image: '/cities/bitola.webp'
   },
   'http://77.28.103.235/tdrn/': {
     name: 'Топ Драјвер - Куманово',
     link: 'http://www.topdrajver.mk/',
     city: 'Куманово',
-    image: '/cities/kumanovo.jpg'
+    image: '/cities/kumanovo.webp'
   },
   'http://sicrez.ddns.net:8008/avir1/': {
     name: 'Авто Испитен Центар - Скопје',
     link: 'https://www.aic.mk/',
     city: 'Скопје',
-    image: '/cities/skopje.jpg'
+    image: '/cities/skopje.webp'
   },
 };
 

@@ -2,7 +2,7 @@
 import type { NuxtLink } from '#build/components';
 <template>
     <nav class="navbar">
-        <img src="/logo.png" alt="Logo" class="logo" />
+        <img src="/logo.webp" alt="Logo" class="logo" />
 
         <NuxtLink to="/">Home</NuxtLink>
         <div class="dropdown">

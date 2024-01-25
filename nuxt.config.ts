@@ -10,7 +10,8 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/seo',
-    'nuxt-gtag'
+    'nuxt-gtag',
+    '@nuxtjs/i18n',
   ],
   plugins: [
     { src: '~/plugins/chart.js', mode: 'client' },
@@ -18,5 +19,8 @@ export default defineNuxtConfig({
   ],
   gtag: {
     id: "G-J64JSE1X54"
+  },
+  i18n: {
+    defaultLocale: "mk"
   }
 })

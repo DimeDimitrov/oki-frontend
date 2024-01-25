@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxtjs/i18n": "^8.0.0",
     "@nuxtjs/seo": "^2.0.0-rc.5",
     "nuxt": "^3.9.3",
     "nuxt-gtag": "^1.1.2",
