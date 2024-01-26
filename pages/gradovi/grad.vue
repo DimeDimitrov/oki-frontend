@@ -1,5 +1,6 @@
 <template>
   <h1 class="header">Статистики според град (градска)</h1>
+  <p class="text">Оваа страница ви прикажува детални статистики за успешно положените возачки испити во градовите во Македонија. Прегледајте ги графиците за колку пати им треба на луѓето да положат (на прва, на втора, на трета, на 3+ обиди) и дознајте повеќе за успешноста и предизвиците на возачите.</p>
   <div class="wrapper" >
   <div class="chart-container" v-if="chartData" v-for="(item, index) in chartData">
       <a class="chart-title">{{item.city }}</a>
@@ -12,6 +13,19 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useApiStore } from '~/store';
+
+useSeoMeta({
+  title: 'Статистики според град (градска)',
+  description: 'Откриј трендови во разни испитни центри и на кој обид минат луѓето во градовите. Одберете ги најдобрите возачки училишта според вистински резултати.',
+  ogTitle: 'Статистики според град (градска)',
+  ogDescription: 'Откриј трендови во разни испитни центри и на кој обид минат луѓето во градовите. Одберете ги најдобрите возачки училишта според вистински резултати.',
+  ogUrl: "https://vozackiispiti.com",
+  ogLocale: "mk_MK",
+  ogSiteName: "Статистики за возачки испити",
+  ogImage: "/logo.png",
+  twitterCard: 'summary_large_image',
+})
+
 
 const store = useApiStore();
 const chartData = ref([])
@@ -55,7 +69,10 @@ font-size: 1.5rem;
 margin-bottom: 10px;
 }
 
-.chart {
+.text{
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
 }
 
 .sample-size {

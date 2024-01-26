@@ -29,6 +29,7 @@ import type { NuxtLink } from '#build/components';
             <NuxtLink to="/skoli/grad">Градска</NuxtLink>
           </div>
         </div>
+        <NuxtLink to="/about">За нас</NuxtLink>
       </nav>
 </template>
 <style scoped>

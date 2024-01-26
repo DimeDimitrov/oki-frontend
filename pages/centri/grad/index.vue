@@ -8,6 +8,7 @@
         <DonutChart class="chart" :labels="labels" :data="getChartData(item.stats)" :colors="colors"/>
         <h3 class="sample-size">Sample size: ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
     </div>
+    <p class="text">Оваа страница ви прикажува детални статистики за успешно положените возачки испити во испитните центри. Прегледајте ги графиците за колку пати им треба на луѓето да положат (на прва, на втора, на трета, на 3+ обиди) и дознајте повеќе за успешноста и предизвиците на возачите.</p>
     </div>
 </template>
 
@@ -15,7 +16,20 @@
 import { ref, onMounted } from 'vue';
 import { useApiStore } from '~/store';
 import DonutChart from '~/components/DonutChart.vue';
+
+useSeoMeta({
+  title: 'Статистики според испитни центри (градска)',
+  description: 'Откриј трендови во разни испитни центри и на кој обид минат луѓето во градовите. Одберете ги најдобрите возачки училишта според вистински резултати.',
+  ogTitle: 'Статистики според испитни центри (градска)',
+  ogDescription: 'Откриј трендови во разни испитни центри и на кој обид минат луѓето во градовите. Одберете ги најдобрите возачки училишта според вистински резултати.',
+  ogUrl: "https://vozackiispiti.com",
+  ogLocale: "mk_MK",
+  ogSiteName: "Статистики за возачки испити",
+  ogImage: "/logo.png",
+  twitterCard: 'summary_large_image',
   
+})
+
 const apiStore = useApiStore();
 const chartData = ref([])
 
@@ -108,7 +122,10 @@ function getImageForWebsite(website) {
   justify-content: center;
   flex-wrap: wrap;
 }
-
+.text{
+  text-align: center;
+  max-width: 800px;
+}
 .chart-container {
   background-color: white;
   margin: 20px;
