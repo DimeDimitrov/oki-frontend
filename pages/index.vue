@@ -49,25 +49,35 @@ function getLinkForWebsite(website){
 </script>
 
 <style scoped>
-.wrapper{
+.wrapper {
   background-color: rgb(225, 236, 247);
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.content{
+
+.content {
   background-color: white;
-  width: 60%;
+  width: 80%; /* Adjust the width for larger screens */
+  max-width: 1200px; /* Set a maximum width for very large screens */
+  margin: 0 auto; /* Center the content */
   border: 1px gray;
   box-shadow: 1px gray;
 }
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .content {
+    width: 90%; /* Adjust the width for medium-sized screens */
+  }
+}
+
 .chart-wrapper {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center; /* Center the chart containers horizontally */
   flex-wrap: wrap;
 }
-
 .chart-container {
   margin: 10px;
   border: 1px solid #ddd;
@@ -76,6 +86,7 @@ function getLinkForWebsite(website){
   text-align: center;
   max-width: 20rem;
   width: 100%;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 .chart-container:hover {

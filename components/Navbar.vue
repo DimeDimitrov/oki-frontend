@@ -1,12 +1,11 @@
 
-import type { NuxtLink } from '#build/components';
 <template>
     <nav class="navbar">
         <img src="/logo.webp" alt="Logo" class="logo" />
 
         <NuxtLink to="/">Home</NuxtLink>
         <div class="dropdown">
-          <NuxtLink to="/centri/grad">Испитни Центри</NuxtLink>
+          <NuxtLink to="/centri">Испитни Центри</NuxtLink>
           <div class="dropdown-content">
             <NuxtLink to="/centri/teorija">Теорија</NuxtLink>
             <NuxtLink to="/centri/poligon">Полигон</NuxtLink>
@@ -14,7 +13,7 @@ import type { NuxtLink } from '#build/components';
           </div>
         </div>
         <div class="dropdown">
-          <NuxtLink to="/gradovi/grad">Градови</NuxtLink>
+          <NuxtLink to="/gradovi">Градови</NuxtLink>
           <div class="dropdown-content">
             <NuxtLink to="/gradovi/teorija">Теорија</NuxtLink>
             <NuxtLink to="/gradovi/poligon">Полигон</NuxtLink>
@@ -22,7 +21,7 @@ import type { NuxtLink } from '#build/components';
           </div>
         </div>
         <div class="dropdown">
-          <NuxtLink to="/skoli/grad">Школи</NuxtLink>
+          <NuxtLink to="/skoli">Школи</NuxtLink>
           <div class="dropdown-content">
             <NuxtLink to="/skoli/teorija">Теорија</NuxtLink>
             <NuxtLink to="/skoli/poligon">Полигон</NuxtLink>
