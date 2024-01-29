@@ -23,5 +23,5 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: "mk",
     locales: ['mk']
-  }
+  },
 })
