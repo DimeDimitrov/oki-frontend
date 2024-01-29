@@ -1,8 +1,9 @@
 
 <template>
-    <nav class="navbar">
-        <img src="/logo.webp" alt="Logo" class="logo" />
-
+    <nav class="navbar-desktop">
+      <img src="/logo-long.webp" alt="Logo" class="logo" />
+      
+      <div class="desktop">
         <NuxtLink to="/">Home</NuxtLink>
         <div class="dropdown">
           <NuxtLink to="/centri">Испитни Центри</NuxtLink>
@@ -29,31 +30,54 @@
           </div>
         </div>
         <NuxtLink to="/about">За нас</NuxtLink>
-      </nav>
+      </div>
+    </nav>
+    <nav class="navbar-phone">
+      <div class="hamburger" @click="toggleHamburger">&#9776;</div>
+      <div v-if="isHamburgerVisible" class="phone-wrapper">
+        <NuxtLink @click="toggleHamburger" to="/">Home</NuxtLink>
+        <NuxtLink @click="toggleHamburger" to="/centri">Испитни Центри</NuxtLink>
+        <NuxtLink @click="toggleHamburger" to="/gradovi">Градови</NuxtLink>
+        <NuxtLink @click="toggleHamburger" to="/skoli">Школи</NuxtLink>
+        <NuxtLink @click="toggleHamburger" to="/about">За нас</NuxtLink>
+      </div>
+      <img src="/logo-long.webp" alt="Logo" class="logo-phone">
+    </nav>
 </template>
+<script setup>
+import { ref } from 'vue'
+const isHamburgerVisible = ref(false)
+function toggleHamburger(){
+  isHamburgerVisible.value = !isHamburgerVisible.value
+}
+</script>
 <style scoped>
-.navbar {
+.navbar-desktop {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   background-color: rgb(127, 158, 224);
   padding: 10px;
   position: relative;
   z-index: 1000;
 }
-
+.navbar-phone{
+  display: none;
+}
 .logo-container {
   margin-right: 10px;
 }
-
+.hamburger{
+  display: none;
+}
 .logo {
-  width: 3rem;
-  height: auto;
-  position: absolute;
-  left: 26rem;
+  height: 2.7rem;
+}
+.logo-phone {
+  display: none;
 }
 
-.navbar a {
+.navbar-desktop a {
   color: #ffffff;
   text-decoration: none;
   padding: 8px 20px;
@@ -93,4 +117,57 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* cringe low effort hamburger XD */
+@media only screen and (max-width: 600px) {
+  .logo-phone{
+    display: block;
+    height: 2.7rem;
+    position: absolute;
+    left: 10px;
+    top: 8px;
+  }
+  .hamburger{
+    display: block;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    scale: 2;
+    cursor: pointer;
+  }
+  .navbar-desktop{
+    display: none;
+  }
+  .navbar-phone{
+    display: block;
+    color: #ffffff;
+    background-color: rgb(127, 158, 224);
+    padding: 30px;
+    position: relative;
+  }
+  .navbar-phone a {
+    text-decoration: none;
+    padding: 8px 20px;
+    font-size: 18px;
+  }
+  .phone-wrapper{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 1rem;
+    top: 3rem;
+    background-color: rgb(129, 129, 197);
+    gap: 0.5rem;
+    z-index: 1000;
+  }
+  .phone-wrapper a{
+    color: white;
+    font-size: 1.7rem;
+  }
+  .desktop{
+    display: none;
+  }
+}
+
+
 </style>

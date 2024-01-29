@@ -4,7 +4,7 @@
   <div class="wrapper" >
   <div class="chart-container" v-if="chartData" v-for="(item, index) in chartData">
       <a class="chart-title">{{item.city }}</a>
-      <DonutChart class="chart" hideLegend="true" :labels="labels" :data="getChartData(item.stats)" :colors="colors"/>
+      <DonutChart class="chart" hideLegend="true" :labels="labels" :data="getChartData(item.stats)" />
       <h3 class="sample-size">Sample size : ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
   </div>
   </div>
@@ -22,7 +22,7 @@ useSeoMeta({
   ogUrl: "https://vozackiispiti.com",
   ogLocale: "mk_MK",
   ogSiteName: "Статистики за возачки испити",
-  ogImage: "/logo.png",
+  ogImage: "/banner.png",
   twitterCard: 'summary_large_image',
 })
 

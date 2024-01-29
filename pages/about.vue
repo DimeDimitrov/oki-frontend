@@ -12,7 +12,7 @@ export default {
     
 }
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .about-us {
     max-width: 600px;
     margin: 0 auto;

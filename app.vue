@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div id="app">
+    <Navbar />
     <NuxtLayout>
-      <Navbar />
       <NuxtPage />
-      <Footer />
     </NuxtLayout>
+    <Footer />
   </div>
 </template>
 
@@ -25,11 +25,16 @@ useSeoMeta({
   ogUrl: "https://vozackiispiti.com",
   ogLocale: "mk_MK",
   ogSiteName: "Статистики за возачки испити",
-  ogImage: "/logo.png",
+  ogImage: "/banner.png",
   twitterCard: 'summary_large_image',
 })
 </script>
 <style>
+#app{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 body{
   min-height: 100vh;
   margin: 0;
@@ -38,4 +43,7 @@ body{
 }
 </style>
 <style>
+h1{
+  color: #007bff;
+}
 </style>

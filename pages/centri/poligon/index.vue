@@ -5,7 +5,7 @@
         <div class="chart-top">
           <a :title="getNameForWebsite(item.website)" :href="getLinkForWebsite(item.website)" class="chart-title"><img class="chart-image" :src="getImageForWebsite(item.website)" :alt="getNameForWebsite(item.website)"></a>
         </div>
-        <DonutChart class="chart" :labels="labels" :data="getChartData(item.stats)" :colors="colors"/>
+        <DonutChart class="chart" :labels="labels" :data="getChartData(item.stats)" />
         <h3 class="sample-size">Sample size: ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
     </div>
     <p class="text">Оваа страница ви прикажува детални статистики за успешно положените возачки испити во испитните центри. Прегледајте ги графиците за колку пати им треба на луѓето да положат (на прва, на втора, на трета, на 3+ обиди) и дознајте повеќе за успешноста и предизвиците на возачите.</p>
@@ -25,7 +25,7 @@ useSeoMeta({
   ogUrl: "https://vozackiispiti.com",
   ogLocale: "mk_MK",
   ogSiteName: "Статистики за возачки испити",
-  ogImage: "/logo.png",
+  ogImage: "/banner.png",
   twitterCard: 'summary_large_image',
 })
 

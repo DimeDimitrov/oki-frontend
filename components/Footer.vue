@@ -13,10 +13,10 @@
 footer {
   background-color: rgb(129, 158, 221);
   text-align: center;
-  bottom: 0;
   width: 100%;
   border-top: 1px solid #ddd;
   color:  white;
+  margin-top: auto;
 }
 
 a {

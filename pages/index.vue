@@ -9,7 +9,7 @@
         <a :href="getLinkForWebsite(item.type)" class="chart-link">
           <div class="chart-content">
             <h3 class="chart-title">{{ item.type }}</h3>
-            <DonutChart class="chart" :labels="labels" :data="getChartData(item.stats)" :colors="colors" />
+            <DonutChart class="chart" :labels="labels" :data="getChartData(item.stats)"  />
             <h3 class="sample-size">Sample size: ({{ Object.values(item.stats).reduce((a, b) => a + b, 0) }})</h3>
           </div>
         </a>
@@ -131,4 +131,11 @@ function getLinkForWebsite(website){
   color: inherit;
   text-decoration: none;
 }
+
+@media only screen and (max-width: 600px) {
+  .subtitle{
+    display: none;
+  }
+}
+
 </style>

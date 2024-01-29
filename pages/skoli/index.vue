@@ -1,13 +1,13 @@
 <template>
     <div class="head">
-        <h1>Статистики според школи</h1>
+        <h1>Школи</h1>
         <h2>Одбери тип на испит</h2>
     </div>
     
     <div class="container">
-        <NuxtLink class="card" to="/skoli/teorija">Теорија</NuxtLink>
-        <NuxtLink class="card" to="/skoli/poligon">Полигон</NuxtLink>
-        <NuxtLink class="card" to="/skoli/grad">Град</NuxtLink>
+        <NuxtLink id="teorija" class="card" to="/skoli/teorija">Теорија</NuxtLink>
+        <NuxtLink id="poligon" class="card" to="/skoli/poligon">Полигон</NuxtLink>
+        <NuxtLink id="grad" class="card" to="/skoli/grad">Град</NuxtLink>
     </div>
 </template>
   
@@ -38,7 +38,21 @@
 .head{
     text-align: center;
 }
-
+#teorija{
+  background-image: url('/teorija.webp');
+  color: rgb(33, 97, 235);
+  background-size: cover;
+}
+#poligon{
+  background-image: url('/poligon.webp');
+  color: rgb(33, 97, 235);
+  background-size: cover;
+}
+#grad{
+  background-image: url('/grad.webp');
+  color: rgb(33, 97, 235);
+  background-size: cover;
+}
 @media screen and (max-width: 768px) {
   .container {
     flex-wrap: wrap;
