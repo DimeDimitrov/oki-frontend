@@ -21,6 +21,7 @@
     "@pinia/nuxt": "^0.5.1",
     "chart.js": "^4.4.1",
     "chartjs-plugin-datalabels": "^2.2.0",
+    "nuxt-og-image": "^3.0.0-rc.30",
     "pinia": "^2.1.7",
     "vue3-easy-data-table": "^1.5.47"
   }

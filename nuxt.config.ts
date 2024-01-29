@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     id: "G-J64JSE1X54"
   },
   i18n: {
-    defaultLocale: "mk"
+    defaultLocale: "mk",
+    locales: ['mk']
   }
 })

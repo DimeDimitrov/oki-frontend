@@ -27,7 +27,7 @@ useSeoMeta({
   ogUrl: "https://vozackiispiti.com",
   ogLocale: "mk_MK",
   ogSiteName: "Статистики за возачки испити",
-  ogImage: "/banner.png",
+  ogImage: "/banner.webp",
   twitterCard: 'summary_large_image',
 })
 const store = useApiStore();
