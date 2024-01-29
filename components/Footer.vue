@@ -1,9 +1,10 @@
 <template>
   <footer>
-    <p>&copy; 2024 Возачки испити. All rights reserved. | 
-      Open sourced at <a href="https://github.com/DimeDimitrov/oki-frontend" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <p>&copy; 2024 Возачки испити. Сите права задржани. | 
+      Open source: <a href="https://github.com/DimeDimitrov/oki-frontend" target="_blank" rel="noopener noreferrer">GitHub</a>
     </p>
-    <a class="privacy" href="/privacy">Privacy Policy</a>
+    <a class="privacy" href="/privacy">Privacy Policy</a> |
+    Контакт: <a :href="'mailto:contact@vozackiispiti.mk'">contact@vozackiispiti.mk</a>
     <br>
     <br>
   </footer>
